@@ -9,7 +9,7 @@ namespace Growtopia_Console_Logger
 {
     class Program
     {
-        public const long consoleOffset = 0xA07888;
+        public const long consoleOffset = 0xA2D5A8;
 
         static void Main(string[] args)
         {
