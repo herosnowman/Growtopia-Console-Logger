@@ -45,6 +45,16 @@ namespace Growtopia_Console_Logger
 
                 handle.MemoryHandle.ReadString(address, 300, out string text);
 
+                //fixes program crashing on gt reconnect
+                if (string.IsNullOrEmpty(text) || text[0] != '`')
+                {
+                    lastReceivedOffset = 0x0;
+
+                    Thread.Sleep(1000);
+
+                    continue;
+                }
+
                 if (text != lastRecievedMessage)
                 {
                     if (rawText)
