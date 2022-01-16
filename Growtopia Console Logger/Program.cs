@@ -9,7 +9,7 @@ namespace Growtopia_Console_Logger
 {
     class Program
     {
-        public const long consoleOffset = 0xA9C898;
+        public static long consoleOffset = GetConsoleOffset();
 
         static void Main(string[] args)
         {
@@ -89,6 +89,13 @@ namespace Growtopia_Console_Logger
         private static string FilterText(string text)
         {
             return System.Text.RegularExpressions.Regex.Replace(text, "`.", "");
+        }
+
+        private static long GetConsoleOffset()
+        {
+            string[] lines = File.ReadAllLines($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/offsets.txt");
+
+            return Convert.ToInt64(lines[1], 16);
         }
     }
 }
